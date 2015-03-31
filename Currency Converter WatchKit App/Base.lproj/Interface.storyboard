@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Currency_Converter_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="left" text="Convert USD to ..." textAlignment="left" id="ViS-B4-Eem"/>
+                        <table alignment="left" id="52X-Th-e8y">
+                            <items>
+                                <tableRow identifier="tableRowController" id="k35-dQ-I1V" customClass="TableRowController" customModule="Currency_Converter_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="KAl-ow-bnt">
+                                        <items>
+                                            <label width="1" alignment="center" textAlignment="center" id="cdn-Le-dpu">
+                                                <fontDescription key="font" type="system" pointSize="23"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="currencyLabel" destination="cdn-Le-dpu" id="Dk0-A8-pFf"/>
+                                        <segue destination="Ldq-Uj-KK7" kind="push" identifier="showDetail" id="cMl-dB-hWv"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="currencyTable" destination="52X-Th-e8y" id="kvA-R4-BVb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Currency-->
+        <scene sceneID="nHQ-2d-aKT">
+            <objects>
+                <controller identifier="detailInterface" title="Currency" id="Ldq-Uj-KK7" customClass="DetailInterfaceController" customModule="Currency_Converter_WatchKit_Extension">
+                    <items>
+                        <label width="1" height="29.5" alignment="left" text="1 USD = " textAlignment="center" id="zql-tl-9Zr"/>
+                        <label width="1" alignment="left" textAlignment="center" id="PL5-Ka-VSP">
+                            <fontDescription key="font" type="system" pointSize="28"/>
+                        </label>
+                        <label width="1" alignment="left" text="KRW" textAlignment="center" id="FjQ-Lg-2Ja"/>
+                        <slider width="1" alignment="left" verticalAlignment="bottom" value="1" minimum="1" maximum="20" steps="19" id="BhW-GX-b6z">
+                            <connections>
+                                <action selector="baseAmountChanged:" destination="Ldq-Uj-KK7" id="HLe-96-pcN"/>
+                            </connections>
+                        </slider>
+                    </items>
+                    <connections>
+                        <outlet property="conversionLabel" destination="PL5-Ka-VSP" id="vVT-V7-RyN"/>
+                        <outlet property="currencyLabel" destination="FjQ-Lg-2Ja" id="yJi-Cc-jDu"/>
+                        <outlet property="dollarsLabel" destination="zql-tl-9Zr" id="bzX-0Q-5vJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Currency_Converter_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
